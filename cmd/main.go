@@ -14,6 +14,8 @@ func main() {
 	fmt.Println(sort.param)
 	sort.Bubble()
 	fmt.Println(sort.param)
+	sort.Selection()
+	fmt.Println(sort.param)
 }
 
 func (s *Sort) Bubble() {
@@ -26,5 +28,20 @@ func (s *Sort) Bubble() {
 				s.param[j+1] = temp
 			}
 		}
+	}
+}
+
+func (s *Sort) Selection() {
+	length := len(s.param)
+	for i := 0; i < length; i++ {
+		minIndex := i
+		for j := i + 1; j < length; j++ {
+			if s.param[j] < s.param[i] {
+				minIndex = j
+			}
+		}
+		temp := s.param[i]
+		s.param[i] = s.param[minIndex]
+		s.param[minIndex] = temp
 	}
 }
